@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="windows-1251">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="mystyle.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+
+    <title></title>
+</head>
+<body>
+
+
+
+<div class="container">
+    <div id="add_Emp" style="display: none;float: right" >
+        <form action="Index.php" method="post" class="form-horizontal">
+            <h3>Добавление сотрудника</h3>
+            <div class="form-group">
+                <label for="inputName" class="col-sm-3 control-label">Имя</label>
+                <div class="col-sm-9">
+                    <input required="required" type="text" name="name" class="form-control" id="inputName" placeholder="Имя">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputSurname" class="col-sm-3 control-label">Фамилия</label>
+                <div class="col-sm-9">
+                    <input type="text" required="required" name="surname" class="form-control" id="inputSurname" placeholder="Фамилия">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPosition" class="col-sm-3 control-label">Должность</label>
+                <div class="col-sm-9">
+                    <input type="text" required="required" name="position" class="form-control" id="inputPosition" placeholder="Должность">
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-3 control-label">Отдел</label>
+                <div class="col-sm-9">
+                    <select name="department" class="form-control">
+                        <option>Менеджмент</option>
+                        <option>Бухгалтерия</option>
+                        <option>Сбыт</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPay" class="col-sm-3 control-label">Оклад</label>
+                <div class="col-sm-9">
+                    <input type="text" required="required" name="pay" class="form-control" id="inputPay" placeholder="Оклад">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputBirthDay" class="col-sm-5 control-label">День рождения</label>
+                <div class="col-sm-7">
+                    <input type="date" required="required" name="birthDay" class="form-control" id="inputBirthDay" placeholder="День рождения">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success" >Добавить</button>
+                </div>
+            </div>
+
+    </form>
+
+    </div>
+
+
+
+    <div id="buttons" style="margin-top: 20px">
+        <button class="btn btn-large btn-primary" id="btn_show" onclick="div_emp('show_emp');">  Показать  </button>
+        <button class="btn btn-large btn-primary"  onclick="div_emp('add_Emp');">  Добавить  </button>
+        <button class="btn btn-large btn-primary" onclick="div_emp('upd_emp')";>  Обновить  </button>
+        <button class="btn btn-large btn-primary" id="btn_del_emp" onclick="div_emp('del_emp')">  Удалить  </button>
+    </div>
+
+    <div id="show_emp" style="display: none; margin-top: 20px">
+
+
+    </div>
+    <div id="del_emp" style="display: none; margin-top: 20px">
+        <form action="">
+            <div class="form-group">
+                <label for="inputDelId">Введите id сотрудника</label>
+                <br>
+                <br>
+                <div class="col-sm-3">
+                    <input type="text" required="required" name="delId" class="form-control" id="inputDelId" placeholder="id для удаления">
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <div class="col-sm-offset-2">
+                    <button type="submit" class="btn btn-success" id="btn_del">Удалить</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div id="upd_emp" style="display: none; margin-top: 20px">
+
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
+
+<script>
+    $(document).ready(function(){
+//Показать всех сотрудников
+        $("#btn_show").click(function(){
+                    $('#show_emp').load('select.php')
+        });
+  //Удалить сотрудника
+        $('#btn_del').click(function(){
+           $('#del_emp').load('delete.php', {'id':document.getElementById('inputDelId').value});
+
+        });
+
+    });
+
+    function div_emp(id){
+        switch (id)
+        {
+            case 'show_emp':
+                document.getElementById(id).style.display='block';
+                document.getElementById('add_Emp').style.display='none';
+                document.getElementById('upd_emp').style.display='none';
+                document.getElementById('del_emp').style.display='none';
+                break;
+            case 'add_Emp':
+                document.getElementById(id).style.display='block';
+                document.getElementById('show_emp').style.display='none';
+                document.getElementById('upd_emp').style.display='none';
+                document.getElementById('del_emp').style.display='none';
+                break;
+            case 'upd_emp':
+                document.getElementById(id).style.display='block';
+                document.getElementById('show_emp').style.display='none';
+                document.getElementById('add_Emp').style.display='none';
+                document.getElementById('del_emp').style.display='none';
+                break;
+            case 'del_emp':
+                document.getElementById(id).style.display='block';
+                document.getElementById('show_emp').style.display='none';
+                document.getElementById('add_Emp').style.display='none';
+                document.getElementById('upd_emp').style.display='none';
+                break;
+        }
+
+    }
+</script>
