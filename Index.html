@@ -87,21 +87,44 @@
                 <br>
                 <br>
                 <div class="col-sm-3">
-                    <input type="text" required="required" name="delId" class="form-control" id="inputDelId" placeholder="id для удаления">
+                    <input type="text" required="required" name="delId"
+                           class="form-control" id="inputDelId"
+                           placeholder="id для удаления" onclick="this.form.submit.disabled=0;">
                 </div>
             </div>
             <br>
             <br>
             <div class="form-group">
                 <div class="col-sm-offset-2">
-                    <button type="submit" class="btn btn-success" id="btn_del">Удалить</button>
+                    <button type="submit" class="btn btn-success"
+                            name="submit" disabled id="btn_del">Удалить</button>
                 </div>
             </div>
         </form>
 
     </div>
-    <div id="upd_emp" style="display: none; margin-top: 20px">
+    <div id="upd_emp" style="display: none;float: right;">
+        <!--<form action="edit.php" method="post" class="form-horizontal">-->
+            <h3>Обновление данных о сотруднике</h3>
+ <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+            <div id="divSearch">
 
+                        <div class="form-group">
+                            <label for="inputID" class="col-sm-4 control-label">Введите id</label>
+                            <div class="col-sm-8">
+                                <input required="required" type="text" name="inputID" class="form-control" id="inputID" placeholder="Id">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" id="btnSearchById" class="btn btn-success" >Найти</button>
+                            </div>
+                        </div>
+
+            </div>
+ <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+        <!--</form>-->
     </div>
 </div>
 
@@ -120,6 +143,12 @@
   //Удалить сотрудника
         $('#btn_del').click(function(){
            $('#del_emp').load('delete.php', {'id':document.getElementById('inputDelId').value});
+
+        });
+
+        $('#btnSearchById').click(function(){
+
+            $('#divSearch').load('edit.php',{'id':document.getElementById('inputID').value});
 
         });
 

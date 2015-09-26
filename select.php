@@ -13,11 +13,12 @@ if($result)
     $count = mysqli_num_rows($result);
     echo "<table class='table table-hover'>
         <tr>
+            <th class='col-md-1'>ID</th>
             <th class='col-md-2'>Имя</th>
             <th class='col-md-2'>Фамилия</th>
             <th class='col-md-2'>Должность</th>
             <th class='col-md-2'>Отдел</th>
-            <th class='col-md-2'>Оклад</th>
+            <th class='col-md-1'>Оклад</th>
             <th class='col-md-2'>День рождения</th>
         </tr>";
 
@@ -25,7 +26,7 @@ if($result)
     {
         $row = mysqli_fetch_row($result);
         echo "<tr>";
-        for ($j = 1 ; $j < 7 ; ++$j) echo "<td>$row[$j]</td>";
+        for ($j = 0 ; $j < 7 ; ++$j) echo "<td>$row[$j]</td>";
         echo "</tr>";
     }
     echo "</table>";
