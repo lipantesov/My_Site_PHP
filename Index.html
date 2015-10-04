@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="mystyle.css">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 
+
     <title></title>
 </head>
 <body>
@@ -13,6 +14,7 @@
 
 
 <div class="container">
+    <!-- DIV дл€ добавлени€ сотрудника в базу данных employees-->
     <div id="add_Emp" style="display: none;float: right" >
         <form action="Index.php" method="post" class="form-horizontal">
             <h3>ƒобавление сотрудника</h3>
@@ -104,7 +106,7 @@
 
     </div>
     <div id="upd_emp" style="display: none;float: right;">
-        <!--<form action="edit.php" method="post" class="form-horizontal">-->
+        <!--<form action="edit.php" method="get" class="form-horizontal">-->
             <h3>ќбновление данных о сотруднике</h3>
  <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
             <div id="divSearch">
@@ -130,7 +132,6 @@
 
 
 
-
 </body>
 </html>
 
@@ -146,11 +147,13 @@
 
         });
 
+
         $('#btnSearchById').click(function(){
 
             $('#divSearch').load('edit.php',{'id':document.getElementById('inputID').value});
 
         });
+
 
     });
 

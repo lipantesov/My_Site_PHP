@@ -8,8 +8,10 @@ or die ("Error : ".mysqli_error($link));
 
 
 
+
 if(isset($_POST['id']))
 {
+
     $id = $_POST['id'];
     // создание строки запроса
     $query ="SELECT * FROM employees WHERE id = '$id'";
@@ -27,7 +29,7 @@ if(isset($_POST['id']))
         $pay = $row[5];
         $birthDay = $row[6];
 
-        echo "<form class='form-horizontal' action='edit.php' method='post'>
+        echo "<form class='form-horizontal' action='edit.php' method='post' id='form1'>
                 <div class='form-group'>
                     <label for='inputID' class='col-sm-3 control-label'>ID</label>
                     <div class='col-sm-9'>
@@ -77,7 +79,7 @@ if(isset($_POST['id']))
                 </div>
                 <div class='form-group'>
                     <div class='col-sm-offset-2 col-sm-10'>
-                        <button type='submit' class='btn btn-success' >Изменить</button>
+                        <button type='submit' class='btn btn-success' id='btnEdit'>Изменить</button>
                     </div>
                 </div>
             </div> </form>";
@@ -86,9 +88,11 @@ if(isset($_POST['id']))
     }
 }
 
+
 if(isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['position']) && isset($_POST['department'])
 && isset($_POST['pay']) && isset($_POST['birthDay']) && isset($_POST['id']))
 {
+
     $id = $_POST['id'];
     $name = $_POST['name'];
     $surname = $_POST['surname'];

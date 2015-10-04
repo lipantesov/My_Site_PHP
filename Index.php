@@ -1,6 +1,6 @@
 <?php
 echo "<link rel='stylesheet' href='bootstrap.css'>";
-//echo "<meta charset='windows-1251'>";
+echo "<meta charset='windows-1251'>";
 include 'connecting.php';
 
 
@@ -11,6 +11,11 @@ isset($_POST['pay'])&& isset($_POST['birthDay']))
 
     $link = mysqli_connect($host,$user,$password,$database)
     or die ("Error : ".mysqli_error($link));
+
+//    mysqli_query("SET NAMES 'cp1251'");
+//    mysqli_query("SET CHARACTER SET 'cp1251'");
+
+    mysqli_set_charset($link,'windows-1251');
 
     $name = htmlentities(mysqli_real_escape_string($link,$_POST['name']));;
     $surname = htmlentities(mysqli_real_escape_string($link,$_POST['surname']));
@@ -26,6 +31,7 @@ isset($_POST['pay'])&& isset($_POST['birthDay']))
 
     $query = "INSERT INTO employees VALUES(NULL,'$name','$surname','$position',
                                               '$department','$pay','$birthDay')";
+
 
     $result = mysqli_query($link,$query) or die ("Error : ".mysqli_error($link));
     if($result)
